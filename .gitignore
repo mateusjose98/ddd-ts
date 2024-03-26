@@ -1,0 +1,18 @@
+# TypeScript
+*.tsbuildinfo
+*.ts
+
+# JavaScript
+*.js
+*.jsx
+
+# Dependency directories
+/node_modules
+/dist
+
+# Build output
+/build
+
+# IDE files
+/.vscode
+/.idea
