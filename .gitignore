@@ -1,9 +1,7 @@
 # TypeScript
 *.tsbuildinfo
-*.ts
 
 # JavaScript
-*.js
 *.jsx
 
 # Dependency directories
