@@ -8,8 +8,8 @@ const address = new Address("123", "Main St", "Springfield", "USA");
 customer._address = address;
 customer.activate();
 
-let item1 = new OrderItem("123", "item1", 100);
-let item2 = new OrderItem("124", "item2", 200);
+let item1 = new OrderItem("123", "item1", 100, 1);
+let item2 = new OrderItem("124", "item2", 200, 1);
 let items = [item1, item2];
 
 // Create order

@@ -6,9 +6,9 @@ describe("Order unit tests", () => {
     expect(() => new Order("", "1", [])).toThrow("Id is required");
   });
   it("should calculate total amount", () => {
-    const item = new OrderItem("1", "Chocolate", 4300.0);
+    const item = new OrderItem("1", "Chocolate", 4300.0, 2);
     const order = new Order("1", "1", [item]);
-    expect(order.total()).toBe(4300.0);
+    expect(order.total()).toBe(8600.0);
   });
   it("should throw error for customerid empty", () => {
     expect(() => new Order("1", "", [])).toThrow("CustomerId is required");
