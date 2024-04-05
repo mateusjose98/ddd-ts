@@ -5,8 +5,8 @@ import OrderService from "./order.service";
 
 describe("order service unit tests", () => {
   it("should place an order", () => {
-    const item = new OrderItem("1", "Product 1", 100, 1);
-    const item2 = new OrderItem("2", "Product 2", 200, 1);
+    const item = new OrderItem("1", "Product 1", 100, "2", 1);
+    const item2 = new OrderItem("2", "Product 2", 200, "2", 1);
 
     const items = [item, item2];
 
@@ -19,8 +19,8 @@ describe("order service unit tests", () => {
   });
 
   it("should get total of all orders", () => {
-    const item = new OrderItem("1", "Product 1", 100, 1);
-    const item2 = new OrderItem("2", "Product 2", 200, 1);
+    const item = new OrderItem("1", "Product 1", 100, "1", 1);
+    const item2 = new OrderItem("2", "Product 2", 200, "1", 1);
 
     const items = [item, item2];
 
@@ -28,7 +28,7 @@ describe("order service unit tests", () => {
 
     const order1 = new Order("1", costumer.id, items);
 
-    const item3 = new OrderItem("3", "Product 3", 300, 1);
+    const item3 = new OrderItem("3", "Product 3", 300, "2", 1);
 
     const order2 = new Order("2", costumer.id, [item3]);
 

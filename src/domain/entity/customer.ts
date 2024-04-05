@@ -13,12 +13,20 @@ export default class Customer {
     this.validate();
   }
 
+  get address() {
+    return this._address;
+  }
+
   get name() {
     return this._name;
   }
 
   get id() {
     return this._id;
+  }
+
+  isActive() {
+    return this._active;
   }
 
   changeName(newName: string) {
