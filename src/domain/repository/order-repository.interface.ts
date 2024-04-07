@@ -1,5 +1,5 @@
-import { Order } from "sequelize";
+import { Order } from "../entity/order";
 import RepositoryInterface from "./repository-interface";
 
-export default interface ProductRepositoryInterface
+export default interface OrderRepositoryInterface
   extends RepositoryInterface<Order> {}
