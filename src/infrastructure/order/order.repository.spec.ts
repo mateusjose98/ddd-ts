@@ -4,12 +4,12 @@ import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 import ProductModel from "../product/repository/product.model";
 import CustomerRepository from "../customer/customer.repository";
-import Customer from "../../domain/entity/customer";
-import Address from "../../domain/entity/address";
+import Customer from "../../domain/customer/customer";
+import Address from "../../domain/customer/address";
 import ProductRepository from "../product/repository/product.repository";
-import Product from "../../domain/entity/product";
-import OrderItem from "../../domain/entity/order_item";
-import { Order } from "../../domain/entity/order";
+import Product from "../../domain/product/product";
+import OrderItem from "../../domain/checkout/order_item";
+import { Order } from "../../domain/checkout/order";
 import OrderRepository from "./order.repository";
 
 describe("Order repository test", () => {
