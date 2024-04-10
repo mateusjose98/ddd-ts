@@ -173,7 +173,7 @@ describe("Order repository test", () => {
     await customerRepository.save(customer2);
 
     const productRepository = new ProductRepository();
-    const product = new Product("123", "Product 1", 10);
+    const product = new Product("3", "Product 1", 10);
     await productRepository.save(product);
 
     const orderItem = new OrderItem(
@@ -183,16 +183,21 @@ describe("Order repository test", () => {
       product.id,
       2
     );
-
-    const order = new Order("123", "123", [orderItem]);
+    const idOrder = "123";
+    const order = new Order(idOrder, "123", [orderItem]);
 
     const orderRepository = new OrderRepository();
     await orderRepository.save(order);
 
-    await orderRepository.update(new Order("123", "456", [orderItem]));
+    const orderItem2 = new OrderItem("300", "Arroz", 10.4, "3", 2);
 
-    const fromDB = await orderRepository.find("123");
+    await orderRepository.update(new Order(idOrder, "456", [orderItem2]));
 
+    const fromDB = await orderRepository.find(idOrder);
+    console.log(fromDB);
     expect(fromDB.customerId).toBe("456");
+    expect(fromDB.items.length).toBe(1);
+    expect(fromDB.items[0].id).toBe("300");
+    expect(fromDB.items[0].name).toBe("Arroz");
   });
 });
