@@ -31,3 +31,9 @@ Domain Events: são eventos que ocorrem no domínio. Eles são úteis para desac
 Módulos: são agrupamentos de entidades, objetos de valor, serviços e repositórios relacionados. Eles são úteis para organizar o código em torno de conceitos de negócios. Busca ordanizar por domínio/subdomínio e não pelo tipo de objeto.
 
 Factories (dica): são classes que são responsáveis por criar objetos complexos. Eles são úteis para encapsular a lógica de criação de objetos complexos.
+
+Para testar a aplicação
+
+`npm install`
+
+`npm test`
