@@ -1,5 +1,5 @@
-import Address from "../../domain/customer/address";
-import Customer from "../../domain/customer/customer";
+import Address from "../../domain/customer/entity/address";
+import Customer from "../../domain/customer/entity/customer";
 import CustomerRepositoryInterface from "../../domain/customer/customer-repository.interface";
 import CustomerModel from "./customer.model";
 

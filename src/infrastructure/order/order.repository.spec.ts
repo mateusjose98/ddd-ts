@@ -4,10 +4,10 @@ import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 import ProductModel from "../product/repository/product.model";
 import CustomerRepository from "../customer/customer.repository";
-import Customer from "../../domain/customer/customer";
-import Address from "../../domain/customer/address";
+import Customer from "../../domain/customer/entity/customer";
+import Address from "../../domain/customer/entity/address";
 import ProductRepository from "../product/repository/product.repository";
-import Product from "../../domain/product/product";
+import Product from "../../domain/product/entity/product";
 import OrderItem from "../../domain/checkout/order_item";
 import { Order } from "../../domain/checkout/order";
 import OrderRepository from "./order.repository";
@@ -19,7 +19,7 @@ describe("Order repository test", () => {
     sequelize = new Sequelize({
       dialect: "sqlite",
       storage: ":memory:",
-      logging: console.log,
+      logging: false,
       sync: { force: true },
     });
 
