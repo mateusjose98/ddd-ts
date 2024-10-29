@@ -1,3 +1,7 @@
+import Customer from "../../customer/entity/customer";
+import { CustomerCreatedEvent } from "../../customer/events/customer-created";
+import { EnviaConsoleLog1Handler } from "../../customer/events/handler/envia-console-log1-handler";
+import { EnviaConsoleLog2Handler } from "../../customer/events/handler/envia-console-log2-handler";
 import SendEmailWhenProductIsCreatedHandler from "../../product/event/handlers/send-email-when-product-is-created";
 import ProductCreatedEvent from "../../product/event/product-created";
 import EventDispatcher from "./event-dispatcher";
@@ -55,4 +59,25 @@ describe("Domain events tests", () => {
 
     expect(spyEventHandler).toHaveBeenCalled();
   });
+
+  it("should notify consolelog 1 and 2 event handlers when CustomerCreated", () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler1 = new EnviaConsoleLog1Handler();
+    const eventHandler2 = new EnviaConsoleLog2Handler();
+    const eventName = "CustomerCreatedEvent";
+    const spyEventHandler1 = jest.spyOn(eventHandler1, "handle");
+    const spyEventHandler2 = jest.spyOn(eventHandler2, "handle");
+
+    eventDispatcher.register(eventName, eventHandler1);
+    eventDispatcher.register(eventName, eventHandler2);
+
+    expect(eventDispatcher.handlers[eventName]).toMatchObject(
+      [eventHandler1, eventHandler2]
+    );
+
+    eventDispatcher.notify(new CustomerCreatedEvent(new Customer("1", "John Doe")));
+    expect(spyEventHandler1).toHaveBeenCalled();
+    expect(spyEventHandler2).toHaveBeenCalled();
+
+  })
 });
