@@ -1,4 +1,6 @@
+import Address from "../../customer/entity/address";
 import Customer from "../../customer/entity/customer";
+import { CustomerAddressChangedEvent } from "../../customer/events/customer-address-changed";
 import { CustomerCreatedEvent } from "../../customer/events/customer-created";
 import { EnviaConsoleLog1Handler } from "../../customer/events/handler/envia-console-log1-handler";
 import { EnviaConsoleLog2Handler } from "../../customer/events/handler/envia-console-log2-handler";
@@ -79,5 +81,23 @@ describe("Domain events tests", () => {
     expect(spyEventHandler1).toHaveBeenCalled();
     expect(spyEventHandler2).toHaveBeenCalled();
 
+  })
+
+  it("should notify EnviaConsoleLogHandler when changeAddress was trigged", () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler1 = new EnviaConsoleLog1Handler();
+    const eventName = "CustomerAddressChangedEvent";
+    const spyEventHandler1 = jest.spyOn(eventHandler1, "handle");
+    eventDispatcher.register(eventName, eventHandler1);
+    expect(eventDispatcher.handlers[eventName]).toMatchObject(
+      [eventHandler1]
+    );
+    const data = {
+      id: "abc",
+      name: "joão",
+      endereco: new Address("rua a", 1, "9090909", "san diego")
+    }
+    eventDispatcher.notify(new CustomerAddressChangedEvent(data));
+    expect(spyEventHandler1).toHaveBeenCalled();
   })
 });
